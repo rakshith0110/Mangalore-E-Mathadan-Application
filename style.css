@@ -1,0 +1,101 @@
+/* Updated CSS for enhanced design */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    font-family: 'Roboto Condensed', sans-serif;
+  }
+  
+  .headerFont {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 24px;
+  }
+  
+  .subFont {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+  }
+  
+  .specialHead {
+    font-family: 'Oswald', sans-serif;
+  }
+  
+  .jumbotron {
+    padding: 50px 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Add border-radius for rounded corners */
+  }
+  
+  .features-col {
+    padding: 30px;
+    background-color: #fff; /* Add background color to feature columns */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+  }
+  
+  .navbar {
+    border-radius: 0;
+  }
+  
+  /* Update button styles */
+  .btn-primary {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background-color: #388e3c;
+    border-color: #388e3c;
+  }
+  
+  /* Add hover effect for navbar links */
+  .navbar-default .navbar-nav > li > a:hover,
+  .navbar-default .navbar-nav > li > a:focus {
+    color: #ccc;
+  }
+  
+  /* Keyframes for animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    0% {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Keyframes for blinking animation */
+  @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  /* Apply blinking animation to the button */
+  .btn-blink {
+    animation: blink 2s infinite;
+  }
+  
