@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MANGALORE E MATDAAN</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Adjustments to table layout and styling */
+    .photo img, .logo img {
+      max-width: 80px; /* Decrease photo and logo max-width */
+      height: auto; /* Maintain aspect ratio */
+    }
+    .table td, .table th {
+      font-size: 14px; /* Decrease font size */
+      padding: 8px; /* Decrease padding */
+    }
+    .vote-button {
+      margin-top: 8px; /* Decrease margin */
+    }
+    .navbar-brand {
+      font-size: 24px; /* Increase font size */
+    }
+    .navbar-btn {
+      margin-left: 10px; /* Adjust margin */
+    }
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .fadeIn {
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes slideIn {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    .slideIn {
+      animation: slideIn 1s ease-in-out;
+    }
+    /* Additional Styling */
+    body {
+      background-color: #f8f9fa; /* Light gray background */
+    }
+    .container {
+      margin-top: 30px; /* Add space at the top */
+    }
+    .table-responsive {
+      overflow-x: auto; /* Allow horizontal scrolling on small screens */
+    }
+    /* Center table content */
+    .table th, .table td {
+      vertical-align: middle;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand">Be smart do your part, VOTE!</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          
+        </ul>
+        <a href="index.html" class="btn btn-success navbar-right navbar-btn"><span class="normalFont"><strong>Sign Out</strong></span></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mt-4">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th class="photo">PHOTO</th>
+            <th class="logo">LOGO</th>
+            <th>Vote</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-height fadeIn">
+            <td>1</td>
+            <td>Captain Brijesh Chowta</td>
+            <td class="photo"><img src="images/brijesh.jpg" alt="Photo"></td>
+            <td class="logo"><img src="images/BJPLOGO.jpeg" alt="Logo"></td>
+            <td><button class="btn btn-success btn-sm vote-button slideIn" data-id="BJP">Vote</button></td>
+          </tr>
+          <tr class="row-height fadeIn">
+            <td>2</td>
+            <td>Padmaraj R Poojary</td>
+            <td class="photo"><img src="images/pamaraj.jpg" alt="Photo"></td>
+            <td class="logo"><img src="images/INCLOGO.jpg" alt="Logo"></td>
+            <td><button class="btn btn-success btn-sm vote-button slideIn" data-id="INC">Vote</button></td>
+          </tr>
+          <tr class="row-height fadeIn">
+            <td>3</td>
+            <td>Prajaakeeya Manohara</td>
+            <td class="photo"><img src="images/manohar.jpg" alt="Photo"></td>
+            <td class="logo"><img src="images/UPPLOGO.png" alt="Logo"></td>
+            <td><button class="btn btn-success btn-sm vote-button slideIn" data-id="UPP">Vote</button></td>
+          </tr>
+          <tr class="row-height fadeIn">
+            <td>4</td>
+            <td>Kanthappa Alangar</td>
+            <td class="photo"><img src="images/Kanthappa.jpg" alt="Photo"></td>
+            <td class="logo"><img src="images/BSPLOGO.jpeg" alt="Logo"></td>
+            <td><button class="btn btn-success btn-sm vote-button slideIn" data-id="BSP">Vote</button></td>
+          </tr>
+          <!-- Add similar rows for other candidates -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  // Animate rows on page load
+  document.querySelectorAll('.fadeIn').forEach(row => {
+    setTimeout(() => {
+      row.classList.add('slideIn');
+    }, 300); // Delay animation to create staggered effect
+  });
+
+  // Handle vote button click event
+  document.querySelectorAll('.vote-button').forEach(button => {
+    button.addEventListener('click', function() {
+      console.log("Button clicked"); // Debug message
+      const candidateValue = button.getAttribute('data-id');
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = 'saveVotetrial222.php';
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = 'selectedCandidate';
+      input.value = candidateValue;
+      form.appendChild(input);
+      document.body.appendChild(form);
+      form.submit();
+    });
+  });
+</script>
+</body>
+</html>
