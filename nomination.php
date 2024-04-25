@@ -1,3 +1,12 @@
+<?php
+// Include the database configuration file
+include_once 'config.php';
+$conn = mysqli_connect($hostname, $username, $password, $database);
+// Fetch candidates data from the database
+$sql = "SELECT * FROM tbl_candidates";
+$result = mysqli_query($conn, $sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +15,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Candidates List</title>
 
-  <!-- Bootstrap -->
+  <!-- Bootstrap CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
 
+  <!-- Google Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
 
+  <!-- Custom CSS -->
   <style>
     .headerFont {
       font-family: 'Ubuntu', sans-serif;
@@ -106,51 +117,42 @@
 
   <div class="container" style="padding:100px;">
     <div class="row">
-      <div class="col-sm-3 candidate-section">
-        <img src="images/brijesh.jpg" class="candidate-img img-thumbnail" alt="">
-        <h4 class="candidate-name">Brijesh Chowta</h4>
-        <h5 class="candidate-party">Bharatiya Janata Party  Candidate</h5>
-        <!-- Button to fetch more details -->
-        <div class="btn-container">
-          <a href="https://www.myneta.info/LokSabha2024/candidate.php?candidate_id=1889" class="btn btn-primary btn-more-details">More Details</a>
-        </div>
-      </div>
-      <div class="col-sm-3 candidate-section">
-        <img src="images/pamaraj.jpg" class="candidate-img img-thumbnail" alt="">
-        <h4 class="candidate-name">Padmaraj  R     Poojary</h4>
-        <h5 class="candidate-party">Indian National Congress Candidate</h5>
-        <!-- Button to fetch more details -->
-        <div class="btn-container">
-          <a href="https://www.myneta.info/LokSabha2024/candidate.php?candidate_id=2345" class="btn btn-primary btn-more-details">More Details</a>
-        </div>
-      </div>
-      <div class="col-sm-3 candidate-section">
-        <img src="images/manohar.jpg" class="candidate-img img-thumbnail" alt="">
-        <h4 class="candidate-name">Prajaakeeya Manohara</h4>
-        <h5 class="candidate-party">Uttama Prajaakeeya Party Candidate</h5>
-        <!-- Button to fetch more details -->
-        <div class="btn-container">
-          <a href="https://www.myneta.info/LokSabha2024/candidate.php?candidate_id=2052" class="btn btn-primary btn-more-details">More Details</a>
-        </div>
-      </div>
-      <div class="col-sm-3 candidate-section">
-        <img src="images/Kanthappa.jpg" class="candidate-img img-thumbnail" alt="">
-        <h4 class="candidate-name">Kanthappa Alangar</h4>
-        <h5 class="candidate-party">Bahujan Samaj Party Candidate</h5>
-        <!-- Button to fetch more details -->
-        <div class="btn-container">
-          <a href="https://www.myneta.info/LokSabha2024/candidate.php?candidate_id=2636" class="btn btn-primary btn-more-details">More Details</a>
-        </div>
-      </div>
+      <?php
+      // Check if there are any candidates
+      if (mysqli_num_rows($result) > 0) {
+        // Output candidates using a loop
+        while ($row = mysqli_fetch_assoc($result)) {
+          ?>
+          <div class="col-sm-3 candidate-section">
+            <img src="<?php echo $row['image_url']; ?>" class="candidate-img img-thumbnail" alt="">
+            <h4 class="candidate-name"><?php echo $row['name']; ?></h4>
+            <h5 class="candidate-party"><?php echo $row['party_affiliation']; ?> Candidate</h5>
+            <!-- Button to fetch more details -->
+            <div class="btn-container">
+              <a href="<?php echo $row['more_details_url']; ?>" class="btn btn-primary btn-more-details">More Details</a>
+            </div>
+          </div>
+          <?php
+        }
+      } else {
+        // If no candidates found
+        echo "<p>No candidates found.</p>";
+      }
+      ?>
     </div>
   </div>
 
   <cen><u><h1><a href="index.html">Back to Home</a></h1></u></cen>
 </div>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
+<!-- Bootstrap JS -->
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
+
+<?php
+// Close database connection
+mysqli_close($conn);
+?>

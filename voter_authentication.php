@@ -99,7 +99,7 @@
                     if (mysqli_num_rows($result) == 1) {
                         // Store voter ID in session
                         $_SESSION['voterId'] = $voter_id;
-                        header("location:vaulttrial222.html");
+                        header("location:voteballot.php");
                     } else {
                         $error = "Authentication Failed";
                         echo "<p class='alert alert-danger'><strong>$error</strong></p>";

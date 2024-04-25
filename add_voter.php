@@ -58,7 +58,7 @@
           </ul>
           
 
-          <button type="submit" class="btn btn-success navbar-right navbar-btn"><span class="normalFont"><strong>Admin Panel</strong></span></button>
+          <a href="add_voter.html" class="btn btn-success navbar-right navbar-btn"><span class="normalFont"><strong>Add more</strong></span></a>
         </div>
 
       </div> <!-- end of container -->

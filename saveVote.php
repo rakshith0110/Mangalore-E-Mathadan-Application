@@ -45,7 +45,7 @@
                 <span class="icon-bar"></span>
             </button>
             <div class="navbar-header">
-                <a href="index.html" class="navbar-brand headerFont text-lg"><strong>Uttarakhand MATDAAN E-Voting 2022</strong></a>
+                <a href="index.html" class="navbar-brand headerFont text-lg"><strong>Mangalore E-MATDAAN 2024</strong></a>
             </div>
 
             <div class="collapse navbar-collapse" id="example-nav-collapse">
@@ -54,7 +54,7 @@
                 </ul>
 
 
-                <button type="submit" class="btn btn-success navbar-right navbar-btn"><span class="normalFont"><strong>Admin Panel</strong></span></button>
+                
             </div>
 
         </div> <!-- end of container -->

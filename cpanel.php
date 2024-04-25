@@ -53,7 +53,7 @@
         <div class="collapse navbar-collapse" id="example-nav-collapse">
           <ul class="nav navbar-nav">
             
-             <li><a href="nomination.html"><span class="subFont"><strong>Candidates List</strong></span></a></li>
+             <li><a href="nomination.php"><span class="subFont"><strong>Candidates List</strong></span></a></li>
             <li><a href="changePassword.php"><span class="subFont"><strong>Admin's Password</strong></span></a></li>
             <li><a href="add_voter.html"><span class="subFont"><strong>Add voter</strong></span></a></li>
           </ul>
@@ -196,10 +196,10 @@
 
                echo "<hr>";
 
-                $total=0;
+                
 
                 // Total
-                $sql ="SELECT * FROM tbl_users";
+              /*  $sql ="SELECT * FROM tbl_users";
                 $result= mysqli_query($conn, $sql);
 
                 if(mysqli_num_rows($result)>0)
@@ -208,10 +208,10 @@
                   {
                     if($row['voted_for'])
                       $total++;
-                  }
+                  }  */
 
 
-                  $tptal= $total*10;
+                  $total= $BJP+$INC+$UPP+$BSP;
 
                   echo "<strong>Total Number of Votes</strong><br>";
                   echo "
@@ -220,7 +220,7 @@
                   </div>
                   ";
                   
-                }
+                
 
               }
             ?>
